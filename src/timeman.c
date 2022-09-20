@@ -121,7 +121,7 @@ bool tm_stop_early(const Thread *thread) {
 
     if (limits->limitedByNodes)
         return thread->depth > 1
-            && thread->nodes >= limits->nodeLimit / thread->nthreads;
+            && thread->nodes >= 4 * limits->nodeLimit / thread->nthreads;
 
     return  thread->depth > 1
         && (thread->nodes & 1023) == 1023

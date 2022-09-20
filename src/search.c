@@ -231,7 +231,8 @@ void* iterativeDeepening(void *vthread) {
         // Check for termination by any of the possible limits
         if (   (limits->limitedBySelf  && tm_finished(thread, tm))
             || (limits->limitedByDepth && thread->depth >= limits->depthLimit)
-            || (limits->limitedByTime  && elapsed_time(tm) >= limits->timeLimit))
+            || (limits->limitedByTime  && elapsed_time(tm) >= limits->timeLimit)
+            || (limits->limitedByNodes && thread->nodes >= limits->nodeLimit / thread->nthreads))
             break;
     }
 
