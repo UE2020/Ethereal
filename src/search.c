@@ -401,6 +401,7 @@ int search(Thread *thread, PVariation *pv, int alpha, int beta, int depth) {
             || (tbBound == BOUND_LOWER && value >= beta)
             || (tbBound == BOUND_UPPER && value <= alpha)) {
 
+            depth = MIN(MAX_PLY - 1, depth + 6);
             tt_store(board->hash, thread->height, NONE_MOVE, value, VALUE_NONE, depth, tbBound);
             return value;
         }
